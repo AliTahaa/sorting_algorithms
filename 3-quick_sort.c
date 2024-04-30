@@ -1,18 +1,5 @@
 #include "sort.h"
-/**
- *swapp - the positions of two elements into an array
- *@array: array
- *@item1: array element
- *@item2: array element
- */
-void swapp(int *array, int i, int j)
-{
-	int temp;
 
-	temp = array[i];
-	array[i] = array[j];
-	array[j] = temp;
-}
 /**
  * lomuto_partition - partition of the array
  * @array: array of integers to be sorted
@@ -31,13 +18,17 @@ int lomuto_partition(int *array, int low, int high, size_t size)
 	{
 		if (array[j] < pivot)
 		{
-			swapp(array, i, j);
+			temp = array[i];
+			array[i] = array[j];
+			array[j] = temp;
 			if (array[i] != array[j])
 				print_array(array, size);
 			i++;
 		}
 	}
-	swapp(array, i, high);
+	temp = array[i];
+	array[i] = array[high];
+	array[high] = temp;
 	if (array[i] != array[high])
 		print_array(array, size);
 	return (i);
