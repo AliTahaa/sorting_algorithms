@@ -1,11 +1,11 @@
 #include "sort.h"
 /**
- *swap - the positions of two elements into an array
+ *swapp - the positions of two elements into an array
  *@array: array
  *@item1: array element
  *@item2: array element
  */
-void swap(int *array, int i, int j)
+void swapp(int *array, int i, int j)
 {
 	int temp;
 
@@ -31,13 +31,13 @@ int lomuto_partition(int *array, int low, int high, size_t size)
 	{
 		if (array[j] < pivot)
 		{
-			swap(array, i, j);
+			swapp(array, i, j);
 			if (array[i] != array[j])
 				print_array(array, size);
 			i++;
 		}
 	}
-	swap(array, i, high);
+	swapp(array, i, high);
 	if (array[i] != array[high])
 		print_array(array, size);
 	return (i);
