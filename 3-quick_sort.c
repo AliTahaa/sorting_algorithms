@@ -19,31 +19,31 @@ void swap(int *array, ssize_t a, ssize_t b)
  * lomuto_partition - partitions the array
  *
  * @array: array
- * @fr: first array element
- * @la: last array element
+ * @low: first array element
+ * @high: last array element
  * @size: size array
  * Return: position of the last element sorted
  */
-int lomuto_partition(int *array, ssize_t fr, ssize_t la, size_t size)
+int lomuto_partition(int *array, ssize_t low, ssize_t high, size_t size)
 {
-	int pivot = array[la];
-	ssize_t curr = fr, finder;
+	int pivot = array[high];
+	ssize_t curr = low, j;
 
-	for (finder = fr; finder < la; finder++)
+	for (j = low; j < high; j++)
 	{
-		if (array[finder] < pivot)
+		if (array[j] < pivot)
 		{
-			if (array[curr] != array[finder])
+			if (array[curr] != array[j])
 			{
-				swap(array, curr, finder);
+				swap(array, curr, j);
 				print_array(array, size);
 			}
 			curr++;
 		}
 	}
-	if (array[curr] != array[la])
+	if (array[curr] != array[high])
 	{
-		swap(array, curr, la);
+		swap(array, curr, high);
 		print_array(array, size);
 	}
 	return (curr);
@@ -78,7 +78,7 @@ void quicksort(int *array, ssize_t fr, ssize_t la, int size)
  */
 void quick_sort(int *array, size_t size)
 {
-	if (!array || size < 2)
+	if (!array || !size)
 		return;
 	quicksort(array, 0, size - 1, size);
 }
